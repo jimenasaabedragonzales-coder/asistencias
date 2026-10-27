@@ -1,0 +1,53 @@
+<section class="space-y-6">
+    <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-wide text-cyan-700">Gestión académica</p>
+                <h3 class="mt-1 text-2xl font-bold text-slate-950">Estudiantes</h3>
+                <p class="mt-2 text-sm text-slate-600">Registra estudiantes y consulta sus datos para organizarlos en cursos.</p>
+            </div>
+            <button id="ReloadStudents" type="button" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">
+                Actualizar lista
+            </button>
+        </div>
+    </div>
+
+    <form id="StudentForm" class="grid gap-4 rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:grid-cols-2">
+        <h4 class="text-lg font-bold text-slate-950">Registrar estudiante</h4>
+        <div id="StudentMessage" class="hidden" role="status"></div>
+        <label class="text-sm font-semibold text-slate-700">Nombre
+            <input name="nombre" required maxlength="50" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+        </label>
+        <label class="text-sm font-semibold text-slate-700">Apellido
+            <input name="apellido" required maxlength="50" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+        </label>
+        <label class="text-sm font-semibold text-slate-700">Dirección
+            <input name="direccion" required maxlength="250" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+        </label>
+        <label class="text-sm font-semibold text-slate-700">Teléfono
+            <input name="telefono" required maxlength="15" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+        </label>
+        <div>
+            <button type="submit" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Guardar estudiante</button>
+        </div>
+    </form>
+
+    <div class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-slate-500">
+                    <tr>
+                        <th class="px-4 py-3">ID</th>
+                        <th class="px-4 py-3">Nombre</th>
+                        <th class="px-4 py-3">Apellido</th>
+                        <th class="px-4 py-3">Dirección</th>
+                        <th class="px-4 py-3">Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody id="StudentsTableList" class="divide-y divide-slate-100 bg-white">
+                    <tr><td colspan="5" class="px-4 py-6 text-center text-slate-500">Cargando estudiantes...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

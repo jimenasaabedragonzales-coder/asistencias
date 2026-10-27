@@ -1,0 +1,28 @@
+### Lista de asignaciones
+GET http://asistencia.com/backend/asignaciones
+Content-Type: application/json
+### Modificar Asignaciones
+PUT http://asistencia.com/backend/asignaciones/1
+Content-Type: application/json
+
+{
+  "cod_docente": 1,
+  "cod_materia": 1,
+  "cod_curso": 1
+}
+
+### Adicionar Asignacion    
+POST http://asistencia.com/backend/asignaciones
+Content-Type: application/json
+
+{
+  "cod_docente": 1,
+  "cod_materia": 2,
+  "cod_curso": 3
+}
+
+### Eliminar Asignacion
+DELETE http://asistencia.com/backend/asignaciones/4
+Accept: application/json
+Content-Type: application/json
+# Si la asignación tiene asistencias, el API la conserva y responde HTTP 409.

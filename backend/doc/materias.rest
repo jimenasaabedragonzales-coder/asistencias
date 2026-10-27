@@ -1,0 +1,27 @@
+### Consulta de materias
+GET http://asistencia.com/backend/materias
+
+### Consulta de materia por id
+GET http://asistencia.com/backend/materias/1
+
+### Modificar materia
+PUT http://asistencia.com/backend/materias/1
+Content-Type: application/json
+
+{
+	"nombre_materia": "Matematicas"
+}
+
+### Adicionar materia
+POST http://asistencia.com/backend/materias
+Content-Type: application/json
+
+{
+	"nombre_materia": "Ciencias Naturales"
+}
+
+### Eliminar materia
+DELETE http://asistencia.com/backend/materias/1
+Accept: application/json
+Content-Type: application/json
+# Si está vinculada a asignaciones, responde HTTP 409 con el motivo.

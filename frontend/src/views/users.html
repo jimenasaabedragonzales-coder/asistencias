@@ -1,0 +1,77 @@
+<section class="space-y-6">
+    <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-wide text-cyan-700">Administracion</p>
+                <h3 id="UserFormTitle" class="mt-1 text-2xl font-bold text-slate-950">Nuevo usuario</h3>
+            </div>
+            <span data-icon="userPlus" data-icon-class="h-6 w-6 text-cyan-700"></span>
+        </div>
+        <div id="UsersMessage" class="hidden"></div>
+        <p class="mt-3 text-sm text-slate-600">Para que un docente pueda iniciar sesión, crea aquí su cuenta con usuario y contraseña, elige el rol Docente y vincúlala con su nombre. La contraseña se guarda protegida y no se puede recuperar en texto legible; puedes cambiarla editando la cuenta.</p>
+        <form id="UserForm" class="mt-5 grid gap-4 md:grid-cols-4">
+            <input id="UserId" type="hidden">
+            <label class="text-sm font-semibold text-slate-700">Username
+                <input id="UserName" required maxlength="50" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal" placeholder="carlos.m">
+            </label>
+            <label class="text-sm font-semibold text-slate-700">Contraseña
+                <input id="UserPassword" type="password" autocomplete="new-password" required maxlength="72" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal" placeholder="Contraseña">
+                <span id="UserPasswordHint" class="mt-1 block text-xs font-normal text-slate-500">Al editar, deja el campo vacío para conservar la contraseña actual.</span>
+            </label>
+            <label class="text-sm font-semibold text-slate-700">Rol
+                <select id="UserRole" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                    <option value="admin">Administrador</option>
+                    <option value="docente">Docente</option>
+                    <option value="estudiante" disabled>Estudiante (sin acceso al sistema)</option>
+                </select>
+            </label>
+            <label class="text-sm font-semibold text-slate-700">Docente vinculado
+                <select id="UserTeacher" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                    <option value="">Selecciona un docente</option>
+                </select>
+            </label>
+            <label class="text-sm font-semibold text-slate-700">ID estudiante
+                <input id="UserStudent" type="number" min="1" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal" placeholder="Opcional">
+            </label>
+            <div class="flex gap-2 md:col-span-4">
+                <button type="submit" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Guardar usuario</button>
+                <button id="CancelUserEdit" type="button" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-center gap-3">
+                <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-50 text-cyan-700">
+                    <span data-icon="users" data-icon-class="h-6 w-6"></span>
+                </span>
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-wide text-cyan-700">Administracion</p>
+                    <h3 class="mt-1 text-2xl font-bold text-slate-950">Listado de usuarios</h3>
+                </div>
+            </div>
+            <span class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-600">
+                <span data-icon="database" data-icon-class="h-4 w-4"></span>
+                Base de asistencia
+            </span>
+        </div>
+        <div class="mt-6 overflow-hidden rounded-lg border border-slate-200">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-slate-500">
+                    <tr>
+                        <th class="px-4 py-3">ID</th>
+                        <th class="px-4 py-3">Username</th>
+                        <th class="px-4 py-3">Rol</th>
+                        <th class="px-4 py-3">Docente vinculado</th>
+                        <th class="px-4 py-3">ID estudiante</th>
+                        <th class="px-4 py-3 text-right">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="UsersTableList" class="divide-y divide-slate-100 bg-white">
+                    <tr><td colspan="6" class="px-4 py-6 text-center text-slate-500">Cargando usuarios...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

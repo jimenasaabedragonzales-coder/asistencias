@@ -1,0 +1,45 @@
+### Iniciar sesión
+POST http://asistencia.com/backend/auth/login
+Content-Type: application/json
+
+{
+  "username": "<usuario_admin_o_docente>",
+  "password": "<contraseña>"
+}
+### Consulta de usuarios
+GET http://asistencia.com/backend/users
+# Solo administradores. La respuesta no incluye hashes de contraseñas.
+
+
+### Modificar Usuario
+PUT http://asistencia.com/backend/users/1
+Content-Type: application/json
+
+{
+  "username": "<usuario_existente>",
+  "password": "<nueva_contraseña>",
+  "rol": "docente",
+  "id_docente": 1,
+  "id_estudiante": null
+}
+
+### Adicionar Usuario
+POST http://asistencia.com/backend/users
+Content-Type: application/json
+
+{
+  "username": "<nuevo_usuario_docente>",
+  "password": "<contraseña_inicial>",
+  "rol": "docente",
+  "id_docente": 1,
+  "id_estudiante": null
+}
+
+### Eliminar Usuario
+DELETE http://asistencia.com/backend/users/1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": 1
+}

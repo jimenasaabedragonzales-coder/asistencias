@@ -1,0 +1,110 @@
+<section class="space-y-6">
+    <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-wide text-cyan-700">Panel docente</p>
+        <h3 class="mt-1 text-2xl font-bold text-slate-950">Mis materias, cursos y asistencia</h3>
+        <p class="mt-2 text-sm text-slate-600">Consulta tus asignaciones, inscribe estudiantes a tus cursos y registra su asistencia.</p>
+    </div>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <h4 class="text-lg font-bold text-slate-950">Mis materias y cursos asignados</h4>
+        <div id="TeacherAssignments" class="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <h4 class="text-lg font-bold text-slate-950">Agregar una asignación</h4>
+        <div id="TeacherAssignmentMessage" class="mt-3 hidden rounded-md px-4 py-3 text-sm font-semibold" role="status"></div>
+        <form id="TeacherAssignmentForm" class="mt-4 grid gap-4 md:grid-cols-3">
+            <label class="text-sm font-semibold text-slate-700">Materia
+                <select id="TeacherSubject" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+            </label>
+            <label class="text-sm font-semibold text-slate-700">Curso
+                <select id="TeacherCourse" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+            </label>
+            <div class="flex items-end">
+                <button type="submit" class="w-full rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Agregar asignación</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="grid gap-6 xl:grid-cols-2">
+        <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <h4 class="text-lg font-bold text-slate-950">Inscribir estudiante a un curso</h4>
+            <div id="TeacherEnrollmentMessage" class="mt-3 hidden rounded-md px-4 py-3 text-sm font-semibold" role="status"></div>
+            <form id="TeacherEnrollmentForm" class="mt-4 grid gap-4">
+                <label class="text-sm font-semibold text-slate-700">Curso
+                    <select id="EnrollmentCourse" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+                </label>
+                <label class="text-sm font-semibold text-slate-700">Estudiante disponible
+                    <select id="EnrollmentStudent" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+                </label>
+                <label class="text-sm font-semibold text-slate-700">Gestión
+                    <input id="EnrollmentYear" type="number" min="2000" max="2100" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                </label>
+                <button type="submit" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Inscribir estudiante</button>
+            </form>
+            <h5 class="mt-6 font-bold text-slate-800">Estudiantes inscritos</h5>
+            <div id="TeacherRoster" class="mt-3 overflow-x-auto"></div>
+        </div>
+
+        <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <h4 class="text-lg font-bold text-slate-950">Registrar asistencia</h4>
+            <div id="TeacherAttendanceMessage" class="mt-3 hidden rounded-md px-4 py-3 text-sm font-semibold" role="status"></div>
+            <form id="TeacherAttendanceForm" class="mt-4 grid gap-4">
+                <label class="text-sm font-semibold text-slate-700">Materia y curso
+                    <select id="AttendanceAssignment" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+                </label>
+                <label class="text-sm font-semibold text-slate-700">Estudiante inscrito
+                    <select id="AttendanceStudent" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+                </label>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <label class="text-sm font-semibold text-slate-700">Fecha
+                        <input id="AttendanceDate" type="date" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                    </label>
+                    <label class="text-sm font-semibold text-slate-700">Estado
+                        <select id="AttendanceState" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                            <option>Presente</option><option>Ausente</option><option>Licencia</option><option>Retraso</option>
+                        </select>
+                    </label>
+                </div>
+                <label class="text-sm font-semibold text-slate-700">Observación
+                    <input id="AttendanceNote" maxlength="250" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                </label>
+                <button type="submit" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Guardar asistencia</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <h4 class="text-lg font-bold text-slate-950">Historial de asistencia de mis cursos</h4>
+        <p class="mt-2 text-sm text-slate-600">Selecciona una materia y curso para consultar o corregir sus registros. Solo se muestran tus asignaciones.</p>
+        <label class="mt-4 block max-w-xl text-sm font-semibold text-slate-700">Materia y curso
+            <select id="TeacherHistoryAssignment" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal"></select>
+        </label>
+        <div id="TeacherHistoryMessage" class="mt-3 hidden rounded-md px-4 py-3 text-sm font-semibold" role="status"></div>
+        <form id="TeacherAttendanceEditForm" hidden class="mt-4 grid gap-4 rounded-lg border border-cyan-100 bg-cyan-50 p-4 sm:grid-cols-3">
+            <input id="TeacherEditAttendanceId" type="hidden">
+            <label class="text-sm font-semibold text-slate-700">Estado
+                <select id="TeacherEditAttendanceState" required class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+                    <option>Presente</option><option>Ausente</option><option>Licencia</option><option>Retraso</option>
+                </select>
+            </label>
+            <label class="text-sm font-semibold text-slate-700 sm:col-span-2">Observación
+                <input id="TeacherEditAttendanceNote" maxlength="250" class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 font-normal">
+            </label>
+            <div class="flex gap-2 sm:col-span-3">
+                <button type="submit" class="rounded-md bg-cyan-700 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-800">Guardar corrección</button>
+                <button id="CancelTeacherAttendanceEdit" type="button" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Cancelar</button>
+            </div>
+        </form>
+        <div class="mt-5 overflow-x-auto rounded-lg border border-slate-200">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-slate-500">
+                    <tr><th class="px-4 py-3">Fecha</th><th class="px-4 py-3">Estudiante</th><th class="px-4 py-3">Estado</th><th class="px-4 py-3">Observación</th><th class="px-4 py-3 text-right">Acciones</th></tr>
+                </thead>
+                <tbody id="TeacherAttendanceHistoryRows" class="divide-y divide-slate-100 bg-white">
+                    <tr><td colspan="5" class="px-4 py-6 text-center text-slate-500">Selecciona una materia y curso.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>

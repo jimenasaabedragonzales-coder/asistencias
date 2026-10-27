@@ -1,0 +1,36 @@
+### Consulta de estudiantes
+GET http://asistencia.com/backend/estudiantes
+
+### Consulta de estudiante por id
+GET http://asistencia.com/backend/estudiantes/1
+
+### Modificar Estudiante
+PUT http://asistencia.com/backend/estudiantes/1
+Content-Type: application/json
+
+{
+  "nombre":"Juan",
+  "apellido":"Perez",
+  "direccion":"Calle Falsa 123",
+  "telefono":"70011111"
+}
+
+### Adicionar Estudiante
+POST http://asistencia.com/backend/estudiantes
+Content-Type: application/json
+
+{
+  "nombre":"Maria",
+  "apellido":"Gonzalez",
+  "direccion":"Barrio Norte",
+  "telefono":"70022222"
+}
+
+### Eliminar Estudiante
+DELETE http://asistencia.com/backend/estudiantes/1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": 1
+}

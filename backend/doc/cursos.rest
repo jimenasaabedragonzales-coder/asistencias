@@ -1,0 +1,30 @@
+### Consulta de cursos
+GET http://asistencia.com/backend/cursos
+Content-Type: application/json
+### Modificar Curso
+PUT http://asistencia.com/backend/cursos/1
+Content-Type: application/json
+
+{
+  "nombre_curso": "Curso de ejemplo",
+  "nivel": "Nivel de ejemplo",
+  "paralelo": "Paralelo de ejemplo"
+}
+
+### Adicionar Curso
+POST http://asistencia.com/backend/cursos
+Content-Type: application/json
+
+{
+  "nombre_curso": "Curso de ejemplo",
+  "nivel": "Nivel de ejemplo",
+  "paralelo": "Paralelo de ejemplo"
+}
+# El nombre, nivel y paralelo identifican un curso. Si ya existe, el API
+# responde HTTP 409 y no crea otra fila.
+
+### Eliminar Curso
+DELETE http://asistencia.com/backend/cursos/1
+Accept: application/json
+Content-Type: application/json
+# Si tiene asignaciones o inscripciones, responde HTTP 409 indicando la relación.

@@ -1,0 +1,32 @@
+### Consulta de docentes
+GET http://asistencia.com/backend/docentes
+
+### Consulta de docente por id
+GET http://asistencia.com/backend/docentes/1
+
+### Modificar Docente
+PUT http://asistencia.com/backend/docentes/1
+Content-Type: application/json
+
+{
+  "nombre":"Juan",
+  "apellido":"Perez",
+  "telefono":"70011111"}
+
+### Adicionar Docente
+POST http://asistencia.com/backend/docentes
+Content-Type: application/json
+
+{
+  "nombre":"Juan",
+  "apellido":"Perezoso",
+  "telefono":"70022222"
+}
+
+# telefono es opcional. Un nombre, apellido y telefono ya registrados
+# producen HTTP 409 en lugar de crear un duplicado.
+### Eliminar Docente
+DELETE http://asistencia.com/backend/docentes/1
+Accept: application/json
+
+# Si tiene asignaciones o una cuenta vinculada, responde HTTP 409 indicando el motivo.
