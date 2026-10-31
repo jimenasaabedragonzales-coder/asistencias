@@ -1,8 +1,11 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^ index.php [QSA,L]
 
 <Files ".env">
     Require all denied
 </Files>
+
+# Evitar ver listado de carpetas
+Options -Indexes
