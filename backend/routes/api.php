@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Access-Control-Allow-Credentials: true');
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-if ($origin !== '' && preg_match('/^https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?$/i', $origin)) {
+if ($origin !== '' && preg_match('/^https?:\/\/(?:localhost|127\.0\.0\.1|asistencias-e9b3\.onrender\.com|.*\.onrender\.com|.*\.vercel\.app)(?::\d+)?$/i', $origin)) {
     header('Access-Control-Allow-Origin: ' . $origin);
     header('Vary: Origin');
 }
@@ -78,12 +78,16 @@ try {
         exit;
     }
 
-    $user = $_SESSION['user'] ?? null;
+  $user = $_SESSION['user'] ?? null;
+$isPublicLogin = in_array($resource, ['users', 'usuarios'], true) && $method === 'POST';
+
+if (!$isPublicLogin) {
     if (!is_array($user) || !in_array($user['rol'] ?? null, ['admin', 'docente'], true)) {
         http_response_code(401);
         echo json_encode(['estado' => false, 'message' => 'Inicia sesión para continuar']);
         exit;
     }
+}
 
     if (($user['rol'] ?? null) === 'docente') {
         $allowedTeacherMethods = [
